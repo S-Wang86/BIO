@@ -9,57 +9,39 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Custom Styles */
         body {
-            /* Set Inter as primary, with Noto Sans SC for Chinese characters */
-            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            /* Set Inter as primary, with Noto Sans SC/JP for CJK characters */
+            font-family: 'Inter', 'Noto Sans SC', 'Noto Sans JP', sans-serif;
         }
 
-        /*
-         * Create a scroll container
-         * - height: 100vh; Makes the container fill the entire viewport height
-         * - overflow-y: scroll; Allows vertical scrolling
-         * - scroll-snap-type: y mandatory; Enforces scroll-snapping on the Y-axis
-         */
         .scroll-container {
             height: 100vh;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
-            /* Add smooth scrolling behavior to the root or scroll container */
             scroll-behavior: smooth;
         }
 
-        /*
-         * Set up each scroll section
-         * - scroll-snap-align: start; Aligns the top of each section with the top of the container
-         */
         .scroll-section {
             scroll-snap-align: start;
         }
         
         /* Animation for the scroll-down arrow */
         .scroll-down-arrow {
-            /* Use the new animation, make it last 2.5 seconds, use an ease-in-out timing function, and loop infinitely */
             animation: moveAndGrow 2.5s ease-in-out infinite;
         }
 
-        /* * New keyframe for the arrow animation.
-         * It moves the arrow down by 6rem (3 times its height of 2rem),
-         * scales it up, and fades it out.
-         */
         @keyframes moveAndGrow {
             0% {
                 transform: translateY(0) scale(1);
                 opacity: 0.8;
             }
             50% {
-                /* The arrow has class h-8, which is 2rem high. 3 * 2rem = 6rem */
                 transform: translateY(6rem) scale(1.5);
                 opacity: 0;
             }
-            /* This part of the cycle keeps the arrow invisible at the top before starting again */
             60% {
                 transform: translateY(0) scale(1);
                 opacity: 0;
@@ -69,12 +51,26 @@
                 opacity: 0.8;
             }
         }
+
+        /* Typing cursor effect */
+        .typing-effect::after {
+            content: '_';
+            display: inline-block;
+            vertical-align: bottom;
+            animation: blink-caret 0.75s step-end infinite;
+            margin-left: 0.25rem;
+        }
+
+        @keyframes blink-caret {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white m-0 p-0 overflow-hidden">
 
-    <!-- Language Switcher Button -->
-    <button id="lang-switcher" class="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-lg hover:bg-white/30 transition-colors duration-300">
+    <!-- Language Switcher Button - initially hidden, will be shown by JS -->
+    <button id="lang-switcher" class="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-lg hover:bg-white/30 transition-colors duration-300 opacity-0 transition-opacity">
         切换中文
     </button>
 
@@ -83,11 +79,11 @@
         <!-- Section 1: Welcome -->
         <section id="welcome" class="scroll-section h-screen w-screen flex flex-col items-center justify-center bg-[#5D0096] relative p-4">
             <div class="text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4" data-lang-en="Welcome to My Homepage" data-lang-zh="欢迎来到我的主页">Welcome to My Homepage</h1>
-                <!-- Removed the "Scroll down to learn more" paragraph -->
+                <!-- Target for the typing animation -->
+                <h1 id="welcome-text" class="text-4xl md:text-6xl font-bold mb-4 typing-effect h-24 md:h-36"></h1>
             </div>
-            <!-- Scroll down hint -->
-            <div class="absolute bottom-10">
+            <!-- Scroll down hint - moved up by ~5cm (bottom-10 -> bottom-40) -->
+            <div class="absolute bottom-40">
                 <a href="#about" class="scroll-down-arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -115,7 +111,6 @@
         <section id="navigation" class="scroll-section h-screen w-screen flex flex-col items-center justify-center bg-gray-900 p-4">
             <div class="text-center w-full max-w-4xl px-4">
                 <h2 class="text-3xl md:text-4xl font-bold mb-8" data-lang-en="Navigate" data-lang-zh="导航">Navigate</h2>
-                <!-- Changed to a grid layout: 1 column on mobile, 3 columns on sm screens and up -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
                     <a href="#welcome" class="nav-link text-lg bg-[#5D0096] hover:bg-[#4c007a] text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105" data-lang-en="Back to Top" data-lang-zh="回到首页">Back to Top</a>
                     <a href="subwebs/projects.html" class="nav-link text-lg bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105" data-lang-en="Projects" data-lang-zh="项目">Projects</a>
@@ -130,44 +125,96 @@
     </div>
 
     <script>
-        // --- Language Switching Logic ---
-        const langSwitcher = document.getElementById('lang-switcher');
-        // Select all elements that have language data attributes
-        const translatableElements = document.querySelectorAll('[data-lang-en]');
-        let currentLang = 'en'; // 'en' is the default
-
-        langSwitcher.addEventListener('click', () => {
-            // Determine the new language
-            currentLang = (currentLang === 'en') ? 'zh' : 'en';
-
-            // Update the button text
-            langSwitcher.textContent = (currentLang === 'en') ? '切换中文' : 'Switch to English';
+        document.addEventListener('DOMContentLoaded', function() {
+            const welcomeTextElement = document.getElementById('welcome-text');
+            const langSwitcher = document.getElementById('lang-switcher');
+            const welcomeSection = document.getElementById('welcome');
             
-            // Update the root lang attribute for accessibility
-            document.documentElement.lang = (currentLang === 'en') ? 'en-US' : 'zh-CN';
+            // --- Typing Animation Logic ---
+            const phrases = [
+                "Welcome to My Homepage",
+                "欢迎来到我的主页",
+                "Bienvenue sur ma page d'accueil",
+                "私のホームページへようこそ",
+                "Bienvenido a mi página de inicio",
+                "Benvenuti nella mia homepage"
+            ];
+            let phraseIndex = 0;
 
-            // Iterate over all translatable elements and update their text
-            translatableElements.forEach(element => {
-                const text = element.dataset[currentLang === 'en' ? 'langEn' : 'langZh'];
-                // Use innerHTML to correctly render <br> tags and other HTML like <strong>
-                element.innerHTML = text; 
-            });
-        });
-
-
-        // --- Smooth Scrolling for Anchor Links ---
-        // This ensures best compatibility across browsers.
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Use the element's scrollIntoView method for smooth scrolling
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+            function typeWriter(text, i, callback) {
+                if (i < text.length) {
+                    welcomeTextElement.innerHTML = text.substring(0, i + 1);
+                    setTimeout(() => typeWriter(text, i + 1, callback), 75);
+                } else if (typeof callback == 'function') {
+                    setTimeout(callback, 1500); // Pause for 1.5 seconds
                 }
+            }
+
+            function eraseWriter(callback) {
+                let text = welcomeTextElement.innerHTML;
+                if (text.length > 0) {
+                    welcomeTextElement.innerHTML = text.substring(0, text.length - 1);
+                    setTimeout(() => eraseWriter(callback), 50);
+                } else if (typeof callback == 'function') {
+                    callback();
+                }
+            }
+
+            function typingLoop() {
+                const currentPhrase = phrases[phraseIndex];
+                typeWriter(currentPhrase, 0, () => {
+                    eraseWriter(() => {
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        typingLoop();
+                    });
+                });
+            }
+
+            // Start the typing loop
+            typingLoop();
+
+            // --- Language Switcher Visibility Logic ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        langSwitcher.classList.add('opacity-0');
+                        langSwitcher.classList.add('pointer-events-none'); // Disable clicks
+                    } else {
+                        langSwitcher.classList.remove('opacity-0');
+                        langSwitcher.classList.remove('pointer-events-none');
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+            observer.observe(welcomeSection);
+
+            // --- Original Language Switching Logic ---
+            const translatableElements = document.querySelectorAll('[data-lang-en]');
+            let currentLang = 'en';
+
+            langSwitcher.addEventListener('click', () => {
+                currentLang = (currentLang === 'en') ? 'zh' : 'en';
+                langSwitcher.textContent = (currentLang === 'en') ? '切换中文' : 'Switch to English';
+                document.documentElement.lang = (currentLang === 'en') ? 'en-US' : 'zh-CN';
+
+                translatableElements.forEach(element => {
+                    const text = element.dataset[currentLang === 'en' ? 'langEn' : 'langZh'];
+                    element.innerHTML = text; 
+                });
+            });
+
+            // --- Smooth Scrolling for Anchor Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
