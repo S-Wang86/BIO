@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies & Interests</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles to enforce original color scheme */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #1c1c1e; /* Original dark background */
+            color: #f4f4f9; /* Original light text color */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Switcher Button -->
+    <button id="lang-switcher" class="fixed top-4 right-4 z-50 bg-black/30 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-lg hover:bg-black/50 transition-colors duration-300">
+        切换中文
+    </button>
+
+    <!-- Header with original orange color -->
+    <header class="text-center py-6" style="background-color: #ff4500;">
+        <h1 class="text-4xl md:text-5xl font-bold text-white" data-lang-en="Racing and More!" data-lang-zh="对赛车的热情！">Racing and More!</h1>
+    </header>
+
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+
+        <!-- Main Content with original lighter dark background -->
+        <main class="p-8 rounded-lg shadow-lg" style="background-color: #2c2c2e;">
+            <div class="content text-center">
+                <p class="text-lg leading-relaxed" data-lang-en="When it comes to racing, my passion hits full throttle! Whether it’s the exhilarating sound of engines roaring or the razor-sharp turns on the track, I live for the adrenaline that motorsport delivers." data-lang-zh="当谈到赛车，我的热情就已满格！无论是引擎咆哮的轰鸣声，还是赛道上锐利的弯道，我都为赛车运动带来的肾上腺素而着迷。">
+                    When it comes to racing, my passion hits full throttle! Whether it’s the exhilarating sound of engines roaring or the razor-sharp turns on the track, I live for the adrenaline that motorsport delivers.
+                </p>
+                <p class="text-lg leading-relaxed mt-4" data-lang-en="As a fan of Daniel Ricciardo, I admire his skill, charisma, and love for the sport. Like him, I approach life with determination, a smile, and a bit of flair!" data-lang-zh="作为丹尼尔·里卡多的粉丝，我欣赏他的技术、个人魅力以及对这项运动的热爱。像他一样，我以决心、微笑和一点点独特的风格来面对生活！">
+                    As a fan of Daniel Ricciardo, I admire his skill, charisma, and love for the sport. Like him, I approach life with determination, a smile, and a bit of flair!
+                </p>
+                
+                <img src="../photos/hobbies.jpg" alt="Daniel Ricciardo in a racing car" class="rounded-lg shadow-xl my-8 mx-auto max-w-full md:max-w-lg">
+                
+                <p class="text-lg leading-relaxed" data-lang-en="Speed is not just a number; it's a way of life. Whether behind a kart’s steering wheel or watching Formula 1, every moment on the track reminds me to push limits, embrace the challenge, and most importantly—enjoy the ride!" data-lang-zh="速度不仅仅是一个数字，它是一种生活方式。无论是手握卡丁车的方向盘，还是观看F1比赛，赛道上的每一刻都在提醒我：要挑战极限，拥抱挑战，以及最重要的——享受整个过程！">
+                    Speed is not just a number; it's a way of life. Whether behind a kart’s steering wheel or watching Formula 1, every moment on the track reminds me to push limits, embrace the challenge, and most importantly—enjoy the ride!
+                </p>
+            </div>
+        </main>
+
+        <!-- Footer with Back Button -->
+        <footer class="text-center mt-16">
+            <a href="../index.html#navigation" class="inline-block text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105" style="background-color: #ff4500;" onmouseover="this.style.backgroundColor='#e03d00'" onmouseout="this.style.backgroundColor='#ff4500'">
+                <span data-lang-en="&larr; Back to Home" data-lang-zh="&larr; 返回主页">&larr; Back to Home</span>
+            </a>
+            <p class="text-gray-500 text-sm mt-4">&copy; 2024 Shaofu Wang. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+    
+    <script>
+        // --- Language Switching Logic ---
+        const langSwitcher = document.getElementById('lang-switcher');
+        const translatableElements = document.querySelectorAll('[data-lang-en]');
+        let currentLang = 'en'; // 'en' is the default
+
+        // Function to switch language
+        function switchLanguage() {
+            currentLang = (currentLang === 'en') ? 'zh' : 'en';
+            langSwitcher.textContent = (currentLang === 'en') ? '切换中文' : 'Switch to English';
+            document.documentElement.lang = (currentLang === 'en') ? 'en-US' : 'zh-CN';
+
+            translatableElements.forEach(element => {
+                const text = element.dataset[currentLang === 'en' ? 'langEn' : 'langZh'];
+                element.innerHTML = text; 
+            });
+        }
+
+        // Initial setup
+        langSwitcher.addEventListener('click', switchLanguage);
+
+    </script>
+</body>
+</html>

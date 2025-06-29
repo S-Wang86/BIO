@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Remote Chemistry Experiment Assistant</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #111827; /* Matched dark background */
+        }
+        .content-section h3 {
+            font-size: 1.75rem; /* 28px */
+            font-weight: bold;
+            color: #C2A8F0; /* Light purple for subtitles */
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #374151;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Language Switcher Button -->
+    <button id="lang-switcher" class="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-lg hover:bg-white/30 transition-colors duration-300">
+        切换中文
+    </button>
+
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white" data-lang-en="Remote Chemistry Experiment Assistant" data-lang-zh="远程化学实验助手">Remote Chemistry Experiment Assistant</h1>
+            <p class="text-xl text-[#C2A8F0] mt-2" data-lang-en="A Detailed Look at the Project" data-lang-zh="项目详情">A Detailed Look at the Project</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Project Overview Section -->
+            <section class="content-section mb-12">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="mt-0" data-lang-en="Abstract" data-lang-zh="项目摘要">Abstract</h3>
+                    <p class="text-gray-300 leading-relaxed" data-lang-en="This project aims to solve the problem of being unable to conduct chemistry experiments on-site. By combining ESP32-CAM image transmission with Arduino control, a 500x440x300mm Remote Chemistry Experiment Assistant was created. The device can perform typical middle school chemistry experiments such as dissolution, filtration, and evaporation. It integrates multiple functional zones for reagent storage, stirring, heating, and emergency fire suppression, all operated by a central robotic arm capable of 3D movement. Students can remotely access and control the experiment via any electronic device, enhancing their understanding through real-time video monitoring and screen recording playback. This project not only improves the utilization of lab equipment but also provides an innovative solution for future hybrid online-offline teaching models." data-lang-zh="本项目旨在解决因故无法到校进行化学实验的问题。通过结合ESP32-CAM图像传输与Arduino控制，我们制作了一个500x440x300mm的远程化学实验助手。该装置能够执行初中化学中的典型实验，如溶解、过滤和蒸发。箱内集成了试剂存放、搅拌、加热和应急灭火等多个功能区，由一个核心的、可在三维空间移动的机械臂进行操作。学生可以通过任何电子设备远程接入并控制实验过程，并通过实时视频监控和录屏回放功能，加深对实验的理解。该项目不仅提高了实验器材的利用率，也为未来的线上线下混合式教学模式提供了创新的解决方案。">
+                        This project aims to solve the problem of being unable to conduct chemistry experiments on-site. By combining ESP32-CAM image transmission with Arduino control, a 500x440x300mm Remote Chemistry Experiment Assistant was created. The device can perform typical middle school chemistry experiments such as dissolution, filtration, and evaporation. It integrates multiple functional zones for reagent storage, stirring, heating, and emergency fire suppression, all operated by a central robotic arm capable of 3D movement. Students can remotely access and control the experiment via any electronic device, enhancing their understanding through real-time video monitoring and screen recording playback. This project not only improves the utilization of lab equipment but also provides an innovative solution for future hybrid online-offline teaching models.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Image Gallery -->
+            <section class="content-section mb-12">
+                 <h3 data-lang-en="Gallery" data-lang-zh="项目展示">Gallery</h3>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Replace these placeholder links with your actual image files -->
+                    <img src="../../photos/projects/2/fig3.jpg" alt="Overall view of the prototype" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/2/7.jpg" alt="Close-up of the robotic arm" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/2/fig2.jpg" alt="3D CAD Model" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/2/5.jpg" alt="User control interface" class="rounded-lg shadow-md w-full h-full object-cover">
+                 </div>
+                 <p class="text-center text-gray-400 mt-2 text-sm" data-lang-en="Tip: Please replace the placeholder images above with pictures from your thesis." data-lang-zh="提示：请将您论文中的图片替换以上占位图。">Tip: Please replace the placeholder images above with pictures from your thesis.</p>
+            </section>
+
+            <!-- Key Features Section -->
+            <section class="content-section mb-12">
+                <h3 data-lang-en="Key Features" data-lang-zh="核心功能">Key Features</h3>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-white" data-lang-en="Remote Real-time Control" data-lang-zh="远程实时操控">Remote Real-time Control</h4>
+                        <p class="text-gray-400 mt-2" data-lang-en="Utilizes ESP32-CAM for dual-camera HD video streaming, allowing for remote real-time monitoring and operation." data-lang-zh="基于ESP32-CAM，实现双机位高清图像传输，用户可远程实时监控和操作。">Utilizes ESP32-CAM for dual-camera HD video streaming, allowing for remote real-time monitoring and operation.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-white" data-lang-en="Multi-DOF Robotic Arm" data-lang-zh="多自由度机械臂">Multi-DOF Robotic Arm</h4>
+                        <p class="text-gray-400 mt-2" data-lang-en="A custom-designed 4-DOF robotic arm with a lead screw and guide rod structure for stable and precise movement." data-lang-zh="自主设计的4自由度机械臂，采用光杆丝杠结构，移动平稳，定位精准。">A custom-designed 4-DOF robotic arm with a lead screw and guide rod structure for stable and precise movement.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-white" data-lang-en="Modular & Safe Design" data-lang-zh="模块化与安全性">Modular & Safe Design</h4>
+                        <p class="text-gray-400 mt-2" data-lang-en="Features a modular layout with designated functional zones, a fire-retardant coating, and a CO2 emergency fire suppression system." data-lang-zh="箱内分区明确，功能模块化。内置防火涂层和二氧化碳紧急灭火系统，保障安全。">Features a modular layout with designated functional zones, a fire-retardant coating, and a CO2 emergency fire suppression system.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Design & Fabrication Section -->
+            <section class="content-section mb-12">
+                <h3 data-lang-en="Design & Fabrication" data-lang-zh="设计与制作">Design & Fabrication</h3>
+                 <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <p class="text-gray-300 leading-relaxed mb-4" data-lang-en="The core of the design is the main robotic arm. To ensure stability during grasping, we designed a parallelogram stabilizer structure, effectively preventing forward and backward tilting. The arm's movement mechanism uses guide rods and lead screws to ensure smooth motion within its 350mm(X) x 200mm(Y) x 250mm(Z) operational range." data-lang-zh="项目的设计核心是主机械臂，为了确保抓取过程的稳定性，我们设计了平四边形稳定结构，有效防止了前后晃动。机械臂的运动机构采用光杆和丝杠，确保了在350mm(X) x 200mm(Y) x 250mm(Z)范围内的平稳移动。">
+                        The core of the design is the main robotic arm. To ensure stability during grasping, we designed a parallelogram stabilizer structure, effectively preventing forward and backward tilting. The arm's movement mechanism uses guide rods and lead screws to ensure smooth motion within its 350mm(X) x 200mm(Y) x 250mm(Z) operational range.
+                    </p>
+                     <p class="text-gray-300 leading-relaxed" data-lang-en="All non-standard structural parts, such as the robotic arm components, servo mounts, and reagent holders, were 3D modeled using CAD software and fabricated via 3D printing (PLA) and laser cutting (basswood sheets). This rapid prototyping approach ensured design precision and significantly shortened the development cycle." data-lang-zh="所有非标准结构件，如机械臂组件、舵机固定架、试剂盒等，均使用CAD软件进行三维建模，并通过3D打印（PLA材料）和激光切割（椴木板）技术进行快速原型制作。这不仅保证了设计的精度，也极大地缩短了开发周期。">
+                        All non-standard structural parts, such as the robotic arm components, servo mounts, and reagent holders, were 3D modeled using CAD software and fabricated via 3D printing (PLA) and laser cutting (basswood sheets). This rapid prototyping approach ensured design precision and significantly shortened the development cycle.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- System Workflow Section -->
+            <section class="content-section mb-12">
+                <h3 data-lang-en="System Workflow" data-lang-zh="系统流程">System Workflow</h3>
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold text-white mb-2" data-lang-en="Operational Flow:" data-lang-zh="操作流程：">Operational Flow:</h4>
+                        <ol class="list-decimal list-inside text-gray-300 space-y-2">
+                            <li data-lang-en="User's device connects to the experiment box's Wi-Fi network." data-lang-zh="用户设备连接到实验箱的Wi-Fi网络。">User's device connects to the experiment box's Wi-Fi network.</li>
+                            <li data-lang-en="Control commands are sent to the ESP32-CAM via the web interface." data-lang-zh="通过网页控制界面，向ESP32-CAM发送操作指令。">Control commands are sent to the ESP32-CAM via the web interface.</li>
+                            <li data-lang-en="The ESP32-CAM forwards the commands to the Arduino main controller via serial port." data-lang-zh="ESP32-CAM将指令通过串口转发给Arduino主控板。">The ESP32-CAM forwards the commands to the Arduino main controller via serial port.</li>
+                            <li data-lang-en="Arduino parses the commands and drives the corresponding servos or motors to perform actions." data-lang-zh="Arduino解析指令，驱动相应的舵机或电机，执行动作。">Arduino parses the commands and drives the corresponding servos or motors to perform actions.</li>
+                            <li data-lang-en="The camera streams the live experiment footage back to the user interface." data-lang-zh="摄像头将实验画面实时回传至用户界面。">The camera streams the live experiment footage back to the user interface.</li>
+                        </ol>
+                    </div>
+                     <div class="flex-1">
+                         <!-- Replace with your workflow diagram image -->
+                        <img src="../../photos/projects/2/4.jpg" alt="Arduino control workflow" class="rounded-lg shadow-md w-full">
+                     </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer with Back Button -->
+        <footer class="text-center mt-16">
+            <!-- This link goes back to the projects page -->
+            <a href="../projects.html" class="inline-block bg-[#5D0096] hover:bg-[#4c007a] text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105" data-lang-en="&larr; Back to All Projects" data-lang-zh="&larr; 返回所有项目">
+                &larr; Back to All Projects
+            </a>
+            <p class="text-gray-500 text-sm mt-4">&copy; 2024 Shaofu Wang. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+    
+    <script>
+        // --- Language Switching Logic ---
+        const langSwitcher = document.getElementById('lang-switcher');
+        // Select all elements that have language data attributes
+        const translatableElements = document.querySelectorAll('[data-lang-en]');
+        let currentLang = 'en'; // 'en' is the default
+
+        langSwitcher.addEventListener('click', () => {
+            // Determine the new language
+            currentLang = (currentLang === 'en') ? 'zh' : 'en';
+
+            // Update the button text
+            langSwitcher.textContent = (currentLang === 'en') ? '切换中文' : 'Switch to English';
+            
+            // Update the root lang attribute for accessibility
+            document.documentElement.lang = (currentLang === 'en') ? 'en-US' : 'zh-CN';
+
+            // Iterate over all translatable elements and update their text
+            translatableElements.forEach(element => {
+                const text = element.dataset[currentLang === 'en' ? 'langEn' : 'langZh'];
+                // Use innerHTML to correctly render <br> tags and other HTML
+                element.innerHTML = text; 
+            });
+        });
+    </script>
+</body>
+</html>

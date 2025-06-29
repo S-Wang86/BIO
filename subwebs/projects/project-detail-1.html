@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Ship Hull Ventilated Cavity Drag Reduction</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #111827; /* Matched dark background */
+        }
+        .content-section h3 {
+            font-size: 1.75rem; /* 28px */
+            font-weight: bold;
+            color: #C2A8F0; /* Light purple for subtitles */
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #374151;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Language Switcher Button -->
+    <button id="lang-switcher" class="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-lg hover:bg-white/30 transition-colors duration-300">
+        切换中文
+    </button>
+
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white" data-lang-en="Investigating Factors of Ship Hull Drag Reduction by Ventilated Cavities" data-lang-zh="船体通气空泡减阻影响因素探究">Investigating Factors of Ship Hull Drag Reduction by Ventilated Cavities</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Project Abstract Section -->
+            <section class="content-section mb-12">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="mt-0" data-lang-en="Abstract" data-lang-zh="项目摘要">Abstract</h3>
+                    <p class="text-gray-300 leading-relaxed" data-lang-en="Ventilated cavity technology can significantly reduce the underwater drag of a ship by altering the fluid medium and flow structure at the hull's surface. This paper investigates the factors affecting drag reduction by creating a multiphase simulation model and conducting experiments with physical models. The study analyzes the influence of relative velocity, hull shape, and the number and position of vertical air vents on drag reduction efficiency, while keeping total ventilation volume and Reynolds number constant. Experimental data was processed using MATLAB for linear regression to establish a quantitative relationship between relative velocity and drag reduction. This research provides a theoretical reference for future studies and applications in naval drag reduction." data-lang-zh="通气空泡减阻技术通过改变船体水下表面的介质属性和流场结构，可实现大幅度减阻。本文以船体气泡流为研究对象，建立了多相仿真模型并结合实物模型实验，探究了影响船体空泡减阻的多种因素。研究在总通气量与雷诺数相同的条件下，分析了船体与水流的相对速度、船体形状、垂直通气孔的数量与位置对减阻效率的影响。通过MATLAB对实验数据进行线性回归，得出了关键因素的定量与定性关系，为后续空泡减阻技术的研究与应用提供了理论参考与支持。">
+                        Ventilated cavity technology can significantly reduce the underwater drag of a ship by altering the fluid medium and flow structure at the hull's surface. This paper investigates the factors affecting drag reduction by creating a multiphase simulation model and conducting experiments with physical models. The study analyzes the influence of relative velocity, hull shape, and the number and position of vertical air vents on drag reduction efficiency, while keeping total ventilation volume and Reynolds number constant. Experimental data was processed using MATLAB for linear regression to establish a quantitative relationship between relative velocity and drag reduction. This research provides a theoretical reference for future studies and applications in naval drag reduction.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Image Gallery -->
+            <section class="content-section mb-12">
+                 <h3 data-lang-en="Gallery" data-lang-zh="实验展示">Gallery</h3>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Replace these placeholder links with your actual image files -->
+                    <img src="../../photos/projects/1/summary-highschoolprojects-1.jpg" alt="Flat plate hull model" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/1/2.jpg" alt="General ship hull model" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/1/quad chart t.jpg" alt="Experimental data charts" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/1/board.jpg" alt="board" class="rounded-lg shadow-md w-full h-full object-cover">
+                 </div>
+                 <p class="text-center text-gray-400 mt-2 text-sm" data-lang-en="Tip: Please replace the placeholder images above with pictures from your thesis." data-lang-zh="提示：请将您论文中的图片替换以上占位图。">Tip: Please replace the placeholder images above with pictures from your thesis.</p>
+            </section>
+
+            <!-- Methodology Section -->
+            <section class="content-section mb-12">
+                <h3 data-lang-en="Methodology" data-lang-zh="研究方法">Methodology</h3>
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <p class="text-gray-300 leading-relaxed mb-4" data-lang-en="The research was conducted using custom-designed experimental equipment, including a flat plate hull model and a general ship hull model, to test various hypotheses. A force gauge measured the drag, while an air pump provided a stable gas supply. Key variables such as relative water velocity and air vent configurations were systematically adjusted." data-lang-zh="本研究采用了自主设计的实验设备，包括平板船体模型和常规船体模型，用以验证不同的假设。实验中使用测力计来测量阻力，并由气泵提供稳定的气体。研究系统性地调整了关键变量，例如水流相对速度和通气孔的布局方案。">
+                        The research was conducted using custom-designed experimental equipment, including a flat plate hull model and a general ship hull model, to test various hypotheses. A force gauge measured the drag, while an air pump provided a stable gas supply. Key variables such as relative water velocity and air vent configurations were systematically adjusted.
+                    </p>
+                     <p class="text-gray-300 leading-relaxed" data-lang-en="The collected data was then analyzed using MATLAB. The least squares method was applied to perform a polynomial curve fit, establishing a quantitative formula that describes the relationship between relative velocity and drag reduction efficiency." data-lang-zh="采集到的实验数据随后使用MATLAB进行分析。通过最小二乘法进行多项式曲线拟合，最终建立了一个描述相对速度与减阻效率之间关系的定量公式。">
+                        The collected data was then analyzed using MATLAB. The least squares method was applied to perform a polynomial curve fit, establishing a quantitative formula that describes the relationship between relative velocity and drag reduction efficiency.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Key Findings Section -->
+            <section class="content-section mb-12">
+                <h3 data-lang-en="Key Findings" data-lang-zh="主要结论">Key Findings</h3>
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <ul class="list-disc list-inside text-gray-300 space-y-4">
+                        <li data-lang-en="Drag reduction efficiency is inversely related to the relative velocity between the hull and the water. The relationship is described by the formula: <br> <code class='text-sm text-[#C2A8F0]'>ΔR_f = -0.0088Δv³ + 0.1937Δv² - 1.6634Δv + 14.1185</code>" data-lang-zh="空泡减阻效率与船体和水流的相对速度成反比。该关系可用以下公式描述：<br> <code class='text-sm text-[#C2A8F0]'>ΔR_f = -0.0088Δv³ + 0.1937Δv² - 1.6634Δv + 14.1185</code>">Drag reduction efficiency is inversely related to the relative velocity between the hull and the water. The relationship is described by the formula: <br> <code class='text-sm text-[#C2A8F0]'>ΔR_f = -0.0088Δv³ + 0.1937Δv² - 1.6634Δv + 14.1185</code></li>
+                        <li data-lang-en="Vent configuration is critical. At low speeds, a single central vent is most effective. At high speeds, multiple transversely-distributed vents perform best." data-lang-zh="通气孔布局至关重要。在低速时，单个中部出气口的减阻率最高；而在高速时，多个横向分布的出气口效果最佳。">Vent configuration is critical. At low speeds, a single central vent is most effective. At high speeds, multiple transversely-distributed vents perform best.</li>
+                        <li data-lang-en="The effect of vent diameter is more pronounced when vents are sparsely distributed; smaller diameters yield higher drag reduction in such cases." data-lang-zh="当通气孔分布较为分散时，其孔径大小对减阻率的影响更显著，此时孔径越小，减阻率越大。">The effect of vent diameter is more pronounced when vents are sparsely distributed; smaller diameters yield higher drag reduction in such cases.</li>
+                        <li data-lang-en="Within the scope of this experiment, the difference in hull shape (flat plate vs. general ship hull) had a minor impact on the overall drag reduction efficiency." data-lang-zh="在本实验的模型范围内，船体形状（平板型 vs. 常规船型）对整体减阻效率的影响较小。">Within the scope of this experiment, the difference in hull shape (flat plate vs. general ship hull) had a minor impact on the overall drag reduction efficiency.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer with Back Button -->
+        <footer class="text-center mt-16">
+            <!-- This link goes back to the projects page -->
+            <a href="../projects.html" class="inline-block bg-[#5D0096] hover:bg-[#4c007a] text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105" data-lang-en="&larr; Back to All Projects" data-lang-zh="&larr; 返回所有项目">
+                &larr; Back to All Projects
+            </a>
+            <p class="text-gray-500 text-sm mt-4">&copy; 2024 Shaofu Wang. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+    
+    <script>
+        // --- Language Switching Logic ---
+        const langSwitcher = document.getElementById('lang-switcher');
+        // Select all elements that have language data attributes
+        const translatableElements = document.querySelectorAll('[data-lang-en]');
+        let currentLang = 'en'; // 'en' is the default
+
+        langSwitcher.addEventListener('click', () => {
+            // Determine the new language
+            currentLang = (currentLang === 'en') ? 'zh' : 'en';
+
+            // Update the button text
+            langSwitcher.textContent = (currentLang === 'en') ? '切换中文' : 'Switch to English';
+            
+            // Update the root lang attribute for accessibility
+            document.documentElement.lang = (currentLang === 'en') ? 'en-US' : 'zh-CN';
+
+            // Iterate over all translatable elements and update their text
+            translatableElements.forEach(element => {
+                const text = element.dataset[currentLang === 'en' ? 'langEn' : 'langZh'];
+                // Use innerHTML to correctly render <br> and <code> tags
+                element.innerHTML = text; 
+            });
+        });
+    </script>
+</body>
+</html>

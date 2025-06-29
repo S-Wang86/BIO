@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #111827; /* Matched dark background */
+        }
+
+        /* Carousel container styling */
+        .filmstrip-carousel {
+            height: 40vh; /* Takes up 40% of the viewport height */
+            min-height: 300px; /* Minimum height for smaller screens */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 4rem 0; /* Margin top and bottom */
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 40vh; /* Width based on height to help with aspect ratio */
+            max-width: 90%;
+            aspect-ratio: 4 / 3;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease, opacity 0.5s ease, z-index 0.5s;
+            cursor: pointer;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem; /* Rounded corners */
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4)); /* Bottom shadow */
+        }
+
+        /* State styles for carousel items */
+        .carousel-item.active {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .carousel-item.prev {
+            transform: translateX(-55%) scale(0.8); /* Moves left and scales down */
+            opacity: 0.7;
+            z-index: 5;
+        }
+
+        .carousel-item.next {
+            transform: translateX(55%) scale(0.8); /* Moves right and scales down */
+            opacity: 0.7;
+            z-index: 5;
+        }
+        
+        /* Styles for items that are not active, prev, or next */
+        .carousel-item:not(.active):not(.prev):not(.next) {
+            transform: scale(0.5);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        /* Navigation buttons for the carousel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 20;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .carousel-btn-prev {
+            left: -60px;
+        }
+        .carousel-btn-next {
+            right: -60px;
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-btn-prev {
+                left: -20px;
+            }
+            .carousel-btn-next {
+                right: -20px;
+            }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <div class="container mx-auto px-4 py-12 max-w-7xl">
+
+        <!-- Header -->
+        <header class="text-center mb-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">Projects</h1>
+            <p class="text-lg text-gray-400 mt-2">A selection of my works.</p>
+        </header>
+
+        <!-- Filmstrip Carousel Section -->
+        <section class="filmstrip-carousel">
+            <div class="carousel-track">
+                <!-- Carousel items will be injected here by JavaScript -->
+            </div>
+            <button class="carousel-btn carousel-btn-prev">&lt;</button>
+            <button class="carousel-btn carousel-btn-next">&gt;</button>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-grid">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project cards will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Footer with Back Button -->
+        <footer class="text-center mt-16">
+            <a href="../index.html#navigation" class="inline-block bg-[#5D0096] hover:bg-[#4c007a] text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                &larr; Back to Home
+            </a>
+            <p class="text-gray-500 text-sm mt-4">&copy; 2024 Shaofu Wang. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Data for projects ---
+            // You can easily add or remove projects here.
+            const projects = [
+                {
+                    title: 'Investigation of Air-Bubble Drag Reduction',
+                    description: 'An award-winning study on air-bubble drag reduction in ship hulls, exploring key factors such as velocity, hull shape, and injection configurations.',
+                    image: '../photos/projects/1/summary-highschoolprojects-1.jpg',
+                    link: './projects/project-detail-1.html'
+                },
+                {
+                    title: 'Remote Chemistry Lab Assistant',
+                    description: 'A remote-controlled lab assistant for chemistry experiments, featuring a custom robotic arm and live video streaming to let users perform real experiments through a web interface.',
+                    image: '../photos/projects/2/fig1.jpg',
+                    link: './projects/project-detail-2.html'
+                },
+                {
+                    title: 'Coming soon',
+                    description: 'N/A',
+                    image: 'https://placehold.co/800x600/C2A8F0/111827?text=Project+3',
+                    link: 'project-detail-3.html'
+                },
+                {
+                    title: 'Coming soon',
+                    description: 'N/A',
+                    image: 'https://placehold.co/800x600/374151/FFFFFF?text=Project+4',
+                    link: 'project-detail-4.html'
+                }
+            ];
+
+            const carouselContainer = document.querySelector('.filmstrip-carousel');
+            const carouselTrack = document.querySelector('.carousel-track');
+            const projectsGrid = document.querySelector('.projects-grid .grid');
+            let currentIndex = 0;
+            let autoScrollInterval; // Variable to hold the interval timer
+
+            // --- Populate Carousel and Grid ---
+            projects.forEach(project => {
+                // Create carousel item
+                const carouselItem = document.createElement('a');
+                carouselItem.href = project.link;
+                carouselItem.className = 'carousel-item';
+                carouselItem.innerHTML = `<img src="${project.image}" alt="${project.title}">`;
+                carouselTrack.appendChild(carouselItem);
+                
+                // Create grid item
+                const gridItem = document.createElement('a');
+                gridItem.href = project.link;
+                gridItem.className = 'bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300';
+                gridItem.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#C2A8F0]">${project.title}</h3>
+                        <p class="text-gray-400 mt-2">${project.description}</p>
+                    </div>
+                `;
+                projectsGrid.appendChild(gridItem);
+            });
+            
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            
+            // --- Carousel Logic ---
+            function updateCarousel() {
+                carouselItems.forEach((item, index) => {
+                    item.classList.remove('active', 'prev', 'next');
+
+                    if (index === currentIndex) {
+                        item.classList.add('active');
+                    } else if (index === (currentIndex - 1 + projects.length) % projects.length) {
+                        item.classList.add('prev');
+                    } else if (index === (currentIndex + 1) % projects.length) {
+                        item.classList.add('next');
+                    }
+                });
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex + 1) % projects.length;
+                updateCarousel();
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+                updateCarousel();
+            }
+            
+            // --- Autoplay Logic ---
+            function startAutoScroll() {
+                // Clear any existing interval to prevent duplicates
+                clearInterval(autoScrollInterval); 
+                // Set a new interval
+                autoScrollInterval = setInterval(showNext, 3500); // Change slide every 3.5 seconds
+            }
+
+            function stopAutoScroll() {
+                clearInterval(autoScrollInterval);
+            }
+
+            // --- Event Listeners ---
+            document.querySelector('.carousel-btn-next').addEventListener('click', () => {
+                showNext();
+                startAutoScroll(); // Reset interval on manual navigation
+            });
+
+            document.querySelector('.carousel-btn-prev').addEventListener('click', () => {
+                showPrev();
+                startAutoScroll(); // Reset interval on manual navigation
+            });
+
+            // Pause autoplay on hover
+            carouselContainer.addEventListener('mouseenter', stopAutoScroll);
+            // Resume autoplay when mouse leaves
+            carouselContainer.addEventListener('mouseleave', startAutoScroll);
+
+            carouselTrack.addEventListener('click', (e) => {
+                const targetItem = e.target.closest('.carousel-item');
+                if (!targetItem) return;
+
+                if (targetItem.classList.contains('next')) {
+                    showNext();
+                } else if (targetItem.classList.contains('prev')) {
+                    showPrev();
+                }
+                // If the active item is clicked, the default link behavior will proceed.
+            });
+            
+            // --- Initialize ---
+            updateCarousel();
+            startAutoScroll(); // Start the autoplay when the page loads
+        });
+    </script>
+</body>
+</html>
