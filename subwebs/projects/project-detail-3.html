@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: AI-Based Perception System</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #111827; /* Matched dark background */
+        }
+        .content-section h3 {
+            font-size: 1.75rem; /* 28px */
+            font-weight: bold;
+            color: #C2A8F0; /* Light purple for subtitles */
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #374151;
+        }
+        
+        /* Carousel container styling */
+        .filmstrip-carousel {
+            height: 50vh; /* Increased height for better view on a detail page */
+            min-height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 50vh;
+            max-width: 90%;
+            aspect-ratio: 4 / 3;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease, opacity 0.5s ease, z-index 0.5s;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+        }
+
+        /* State styles for carousel items */
+        .carousel-item.active {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .carousel-item.prev {
+            transform: translateX(-55%) scale(0.8);
+            opacity: 0.7;
+            z-index: 5;
+        }
+
+        .carousel-item.next {
+            transform: translateX(55%) scale(0.8);
+            opacity: 0.7;
+            z-index: 5;
+        }
+        
+        .carousel-item:not(.active):not(.prev):not(.next) {
+            transform: scale(0.5);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        /* Navigation buttons for the carousel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 20;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .carousel-btn-prev { left: -60px; }
+        .carousel-btn-next { right: -60px; }
+        
+        @media (max-width: 768px) {
+            .carousel-btn-prev { left: -20px; }
+            .carousel-btn-next { right: -20px; }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Language Switcher Button -->
+    <button id="lang-switcher" class="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-lg hover:bg-white/30 transition-colors duration-300">
+        切换中文
+    </button>
+
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+             <h1 class="text-4xl md:text-5xl font-bold text-white" data-lang-en="Multimodal AI-Based Perception Enhancement System" data-lang-zh="基于多模态人工智能的感知提升系统">Multimodal AI-Based Perception Enhancement System</h1>
+            <p class="text-lg text-gray-400 mt-2" data-lang-en="WLA Future Scientist Program Challenge" data-lang-zh="世界顶尖科学家论坛 未来科学家培养计划挑战">WLA Future Scientist Program Challenge</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Project Overview Section -->
+            <section class="content-section mb-12">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="mt-0" data-lang-en="The Challenge" data-lang-zh="挑战课题">The Challenge</h3>
+                     <div data-lang-en="<p class='text-gray-400 mb-2'><strong>My Role:</strong> Team Leader</p><p class='text-gray-400'><strong>Topic:</strong> How to enhance human perception using nanotechnology?</p>" data-lang-zh="<p class='text-gray-400 mb-2'><strong>我的角色：</strong>组长</p><p class='text-gray-400'><strong>课题：</strong>如何利用纳米技术提升人类感知？</p>">
+                        <p class="text-gray-400 mb-2"><strong>My Role:</strong> Team Leader</p>
+                        <p class="text-gray-400"><strong>Topic:</strong> How to enhance human perception using nanotechnology?</p>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mt-4" data-lang-en="As team leader, I guided my group through an intensive 2-day hackathon. My responsibilities covered the full scope of the challenge: from initial problem analysis and brainstorming our solution, to overseeing the creation of a <strong>conceptual demonstration model</strong>. It is important to note this was a proof-of-concept to illustrate our ideas, not a functional machine. I was also responsible for producing and delivering the final presentation." data-lang-zh="作为组长，我带领团队完成了一场高强度的为期2天的挑战赛。我的职责贯穿了整个挑战过程：从最初的问题分析、构思解决方案，到主导制作了一个用于阐述我们想法的<strong>概念演示模型</strong>。需要强调的是，这并非一个可实际使用的机器。最终，我负责制作并完成了最终的现场汇报。">
+                        As team leader, I guided my group through an intensive 2-day hackathon. My responsibilities covered the full scope of the challenge: from initial problem analysis and brainstorming our solution, to overseeing the creation of a <strong>conceptual demonstration model</strong>. It is important to note this was a proof-of-concept to illustrate our ideas, not a functional machine. I was also responsible for producing and delivering the final presentation.
+                    </p>
+                </div>
+            </section>
+            
+            <section class="content-section mb-12">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="mt-0" data-lang-en="Core Innovation" data-lang-zh="核心创新点">Core Innovation</h3>
+                    <p class="text-gray-300 leading-relaxed" data-lang-en="Our project's core innovation was the novel proposal to use a piezoelectric electret to create a controllable metasurface. By applying a voltage, the material's surface micro-structure could be dynamically altered, allowing for real-time manipulation of optical properties. This approach formed the theoretical foundation for our conceptual model aimed at enhancing perception." data-lang-zh="我们项目的核心创新点，是首次提出利用压电驻极体来制作可控的超表面材料。通过施加电压，我们可以动态地改变材料的表面微观结构，从而实现对光学特性的实时调控。这个方法构成了我们旨在增强感知的概念演示模型的理论基础。">
+                       Our project's core innovation was the novel proposal to use a piezoelectric electret to create a controllable metasurface. By applying a voltage, the material's surface micro-structure could be dynamically altered, allowing for real-time manipulation of optical properties. This approach formed the theoretical foundation for our conceptual model aimed at enhancing perception.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Image Gallery Carousel -->
+            <section class="content-section mb-12">
+                 <h3 data-lang-en="Gallery" data-lang-zh="活动照片">Gallery</h3>
+                 <div class="filmstrip-carousel">
+                    <div class="carousel-track">
+                        <!-- Carousel items will be injected here by JavaScript -->
+                    </div>
+                    <button class="carousel-btn carousel-btn-prev">&lt;</button>
+                    <button class="carousel-btn carousel-btn-next">&gt;</button>
+                </div>
+            </section>
+
+            <!-- Outcomes & Accolades Section -->
+            <section class="content-section mb-12">
+                <h3 data-lang-en="Outcomes & Accolades" data-lang-zh="成果与荣誉">Outcomes & Accolades</h3>
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <ul class="list-disc list-inside text-gray-300 space-y-3">
+                        <li data-lang-en="Received the <strong>highest score</strong> from the judging panel for our presentation and concept." data-lang-zh="我们的汇报与概念方案获得了评委的<strong>最高分</strong>评价。">Received the <strong>highest score</strong> from the judging panel for our presentation and concept.</li>
+                        <li data-lang-en="Our project was awarded the <strong>'Outstanding Project'</strong> title." data-lang-zh="我们的项目荣获<strong>“优秀项目奖”</strong>。">Our project was awarded the <strong>'Outstanding Project'</strong> title.</li>
+                        <li data-lang-en="Our team was recognized as an <strong>'Outstanding Team'</strong>." data-lang-zh="我们的小组被评为<strong>“优秀小组”</strong>。">Our team was recognized as an <strong>'Outstanding Team'</strong>.</li>
+                        <li data-lang-en="I was personally honored with the <strong>'Outstanding Camper'</strong> award." data-lang-zh="我个人荣获<strong>“优秀营员”</strong>称号。">I was personally honored with the <strong>'Outstanding Camper'</strong> award.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer with Back Button -->
+        <footer class="text-center mt-16">
+            <a href="../projects.html" class="inline-block bg-[#5D0096] hover:bg-[#4c007a] text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105" data-lang-en="&larr; Back to All Projects" data-lang-zh="&larr; 返回所有项目">
+                &larr; Back to All Projects
+            </a>
+            <p class="text-gray-500 text-sm mt-4">&copy; 2024 Shaofu Wang. All Rights Reserved.</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Carousel Data ---
+            const galleryImages = [
+                { src: '../../photos/projects/3/3.jpg', alt: 'Presentation Photo 1' },
+                { src: '../../photos/projects/3/2.jpg', alt: 'Presentation Photo 2' },
+                { src: '../../photos/projects/3/1.jpg', alt: 'Model Photo 1' },
+                { src: '../../photos/projects/3/4.jpg', alt: 'Photo 2' },
+                { src: '../../photos/projects/3/6.jpg', alt: 'Highest Score Photo' },
+                { src: '../../photos/projects/3/7.jpg', alt: 'Highest Score Photo' }
+            ];
+
+            // --- Carousel Logic ---
+            const carouselContainer = document.querySelector('.filmstrip-carousel');
+            const carouselTrack = carouselContainer.querySelector('.carousel-track');
+            let currentIndex = 0;
+            let autoScrollInterval;
+
+            galleryImages.forEach(image => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
+                item.innerHTML = `<img src="${image.src}" alt="${image.alt}">`;
+                carouselTrack.appendChild(item);
+            });
+            
+            const carouselItems = carouselTrack.querySelectorAll('.carousel-item');
+
+            function updateCarousel() {
+                carouselItems.forEach((item, index) => {
+                    item.classList.remove('active', 'prev', 'next');
+                    if (index === currentIndex) item.classList.add('active');
+                    else if (index === (currentIndex - 1 + galleryImages.length) % galleryImages.length) item.classList.add('prev');
+                    else if (index === (currentIndex + 1) % galleryImages.length) item.classList.add('next');
+                });
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex + 1) % galleryImages.length;
+                updateCarousel();
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+                updateCarousel();
+            }
+            
+            function startAutoScroll() {
+                clearInterval(autoScrollInterval); 
+                autoScrollInterval = setInterval(showNext, 3500);
+            }
+            
+            // Event listeners for manual navigation
+            carouselContainer.querySelector('.carousel-btn-next').addEventListener('click', () => { showNext(); startAutoScroll(); });
+            carouselContainer.querySelector('.carousel-btn-prev').addEventListener('click', () => { showPrev(); startAutoScroll(); });
+
+            // Initialize carousel
+            updateCarousel();
+            startAutoScroll(); // Start the non-stop scrolling
+
+            // --- Language Switching Logic ---
+            const langSwitcher = document.getElementById('lang-switcher');
+            const translatableElements = document.querySelectorAll('[data-lang-en]');
+            let currentLang = 'en';
+
+            function switchLanguage() {
+                currentLang = (currentLang === 'en') ? 'zh' : 'en';
+                langSwitcher.textContent = (currentLang === 'en') ? '切换中文' : 'Switch to English';
+                document.documentElement.lang = (currentLang === 'en') ? 'en-US' : 'zh-CN';
+
+                translatableElements.forEach(element => {
+                    const text = element.dataset[currentLang === 'en' ? 'langEn' : 'langZh'];
+                    element.innerHTML = text; 
+                });
+            }
+            langSwitcher.addEventListener('click', switchLanguage);
+        });
+    </script>
+</body>
+</html>

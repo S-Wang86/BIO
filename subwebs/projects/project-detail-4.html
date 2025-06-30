@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Intelligent Library Book Delivery System</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #111827; /* Matched dark background */
+        }
+        .content-section h3 {
+            font-size: 1.75rem; /* 28px */
+            font-weight: bold;
+            color: #C2A8F0; /* Light purple for subtitles */
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #374151;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Language Switcher Button -->
+    <button id="lang-switcher" class="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-lg hover:bg-white/30 transition-colors duration-300">
+        切换中文
+    </button>
+
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white" data-lang-en="Intelligent Library Book Delivery System" data-lang-zh="智能图书馆图书送递系统">Intelligent Library Book Delivery System</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Project Overview Section -->
+            <section class="content-section mb-12">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <h3 class="mt-0" data-lang-en="Abstract" data-lang-zh="项目摘要">Abstract</h3>
+                    <p class="text-gray-300 leading-relaxed" data-lang-en="This project is the minimal functional unit of a larger intelligent library concept. It includes standardized modular bookshelves, a book-retrieving robot with a lifting tray, and a mobile app for user commands. The system achieves automated book retrieval and delivery, enabling unmanaged library services in communities and schools. Users can request books via the app, and the delivery robot navigates to the designated shelf, retrieves the book with its sensor-activated tray, and delivers it to the user. This system is designed to improve accessibility for users with limited mobility and increase the efficiency of library management." data-lang-zh="本项目是一个大型智能图书馆概念的最小功能单元，包括标准化的书架、带升降托盘的取书机器人和用于发送指令的手机APP。该系统能基本实现自动取送图书，旨在为社区和学校提供无人化管理的图书借阅服务。使用者可通过APP发送指令，运输机器人根据指令到达指定位置，通过与书架的超声波模块联动，完成取书并送至用户。此系统旨在方便行动不便的用户，减少图书管理的人力操作，并促进图书的共享与流通。">
+                        This project is the minimal functional unit of a larger intelligent library concept. It includes standardized modular bookshelves, a book-retrieving robot with a lifting tray, and a mobile app for user commands. The system achieves automated book retrieval and delivery, enabling unmanaged library services in communities and schools. Users can request books via the app, and the delivery robot navigates to the designated shelf, retrieves the book with its sensor-activated tray, and delivers it to the user. This system is designed to improve accessibility for users with limited mobility and increase the efficiency of library management.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Image Gallery -->
+            <section class="content-section mb-12">
+                 <h3 data-lang-en="Gallery" data-lang-zh="项目展示">Gallery</h3>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Replace these placeholder links with your actual image files -->
+                    <img src="../../photos/projects/4/1.jpg" alt="Overall view of the prototype" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/4/3.jpg" alt="Bookshelf delivery mechanism" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/4/4.jpg" alt="Delivery robot with lifting platform" class="rounded-lg shadow-md w-full h-full object-cover">
+                    <img src="../../photos/projects/4/5.jpg" alt="App interface" class="rounded-lg shadow-md w-full h-full object-cover">
+                 </div>
+            </section>
+
+            <!-- Key Components Section -->
+            <section class="content-section mb-12">
+                <h3 data-lang-en="Key Components & Technology" data-lang-zh="核心组件与技术">Key Components & Technology</h3>
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <ul class="list-disc list-inside text-gray-300 space-y-3">
+                        <li data-lang-en="<strong>Modular Bookshelves:</strong> Designed as movable units with a gear-and-rack mechanism for book ejection, controlled by an Arduino and activated by an ultrasonic sensor." data-lang-zh="<strong>模块化书架：</strong>设计为可移动单元，配备齿轮齿条传动机构用于推出书籍，由Arduino控制并被超声波传感器触发。"><strong>Modular Bookshelves:</strong> Designed as movable units with a gear-and-rack mechanism for book ejection, controlled by an Arduino and activated by an ultrasonic sensor.</li>
+                        <li data-lang-en="<strong>Delivery Robot:</strong> A line-following vehicle equipped with a lifting platform. The platform's height is adjusted by a 360-degree servo to interface with different shelf levels." data-lang-zh="<strong>运输机器人：</strong>一台配备升降平台的巡线小车。升降台由一个360度舵机驱动，以适应不同层高的书架。"><strong>Delivery Robot:</strong> A line-following vehicle equipped with a lifting platform. The platform's height is adjusted by a 360-degree servo to interface with different shelf levels.</li>
+                        <li data-lang-en="<strong>Mobile App:</strong> Developed using MIT App Inventor, the app allows users to search for books and send commands (book ID, seat number) to the system via Bluetooth." data-lang-zh="<strong>手机应用：</strong>使用MIT App Inventor开发，允许用户搜索图书并通过蓝牙发送指令（如图书编号、座位号）给系统。"><strong>Mobile App:</strong> Developed using MIT App Inventor, the app allows users to search for books and send commands (book ID, seat number) to the system via Bluetooth.</li>
+                        <li data-lang-en="<strong>Fabrication:</strong> Utilized a combination of 3D printing (for custom parts like gears) and laser cutting, with a robust frame built from aluminum profiles and wood." data-lang-zh="<strong>制作工艺：</strong>结合了3D打印（用于定制齿轮等零件）和激光切割技术，主体框架由铝型材和木板搭建，保证了结构的稳固性。"><strong>Fabrication:</strong> Utilized a combination of 3D printing (for custom parts like gears) and laser cutting, with a robust frame built from aluminum profiles and wood.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer with Back Button -->
+        <footer class="text-center mt-16">
+            <!-- This link goes back to the projects page -->
+            <a href="../projects.html" class="inline-block bg-[#5D0096] hover:bg-[#4c007a] text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105" data-lang-en="&larr; Back to All Projects" data-lang-zh="&larr; 返回所有项目">
+                &larr; Back to All Projects
+            </a>
+            <p class="text-gray-500 text-sm mt-4">&copy; 2024 Shaofu Wang. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+    
+    <script>
+        // --- Language Switching Logic ---
+        const langSwitcher = document.getElementById('lang-switcher');
+        const translatableElements = document.querySelectorAll('[data-lang-en]');
+        let currentLang = 'en'; // 'en' is the default
+
+        function switchLanguage() {
+            currentLang = (currentLang === 'en') ? 'zh' : 'en';
+            langSwitcher.textContent = (currentLang === 'en') ? '切换中文' : 'Switch to English';
+            document.documentElement.lang = (currentLang === 'en') ? 'en-US' : 'zh-CN';
+
+            translatableElements.forEach(element => {
+                const text = element.dataset[currentLang === 'en' ? 'langEn' : 'langZh'];
+                element.innerHTML = text; 
+            });
+        }
+
+        langSwitcher.addEventListener('click', switchLanguage);
+    </script>
+</body>
+</html>

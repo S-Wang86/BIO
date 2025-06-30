@@ -72,7 +72,6 @@
             z-index: 5;
         }
         
-        /* Styles for items that are not active, prev, or next */
         .carousel-item:not(.active):not(.prev):not(.next) {
             transform: scale(0.5);
             opacity: 0;
@@ -98,20 +97,12 @@
         .carousel-btn:hover {
             background-color: rgba(0, 0, 0, 0.7);
         }
-        .carousel-btn-prev {
-            left: -60px;
-        }
-        .carousel-btn-next {
-            right: -60px;
-        }
+        .carousel-btn-prev { left: -60px; }
+        .carousel-btn-next { right: -60px; }
         
         @media (max-width: 768px) {
-            .carousel-btn-prev {
-                left: -20px;
-            }
-            .carousel-btn-next {
-                right: -20px;
-            }
+            .carousel-btn-prev { left: -20px; }
+            .carousel-btn-next { right: -20px; }
         }
     </style>
 </head>
@@ -128,7 +119,7 @@
         <!-- Filmstrip Carousel Section -->
         <section class="filmstrip-carousel">
             <div class="carousel-track">
-                <!-- Carousel items will be injected here by JavaScript -->
+                <!-- Carousel items for featured projects will be injected here -->
             </div>
             <button class="carousel-btn carousel-btn-prev">&lt;</button>
             <button class="carousel-btn carousel-btn-next">&gt;</button>
@@ -137,7 +128,7 @@
         <!-- Projects Grid -->
         <section class="projects-grid">
              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project cards will be injected here by JavaScript -->
+                <!-- All project cards will be injected here -->
             </div>
         </section>
 
@@ -154,50 +145,58 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- Data for projects ---
-            // You can easily add or remove projects here.
-            const projects = [
+            // Set 'featured: true' for projects you want in the top carousel.
+            const allProjects = [
                 {
                     title: 'Investigation of Air-Bubble Drag Reduction',
                     description: 'An award-winning study on air-bubble drag reduction in ship hulls, exploring key factors such as velocity, hull shape, and injection configurations.',
                     image: '../photos/projects/1/summary-highschoolprojects-1.jpg',
-                    link: './projects/project-detail-1.html'
+                    link: './projects/project-detail-1.html',
+                    featured: true // This will appear in the carousel
                 },
                 {
                     title: 'Remote Chemistry Lab Assistant',
                     description: 'A remote-controlled lab assistant for chemistry experiments, featuring a custom robotic arm and live video streaming to let users perform real experiments through a web interface.',
                     image: '../photos/projects/2/fig1.jpg',
-                    link: './projects/project-detail-2.html'
+                    link: './projects/project-detail-2.html',
+                    featured: true // This will also appear in the carousel
                 },
                 {
-                    title: 'Coming soon',
-                    description: 'N/A',
-                    image: 'https://placehold.co/800x600/C2A8F0/111827?text=Project+3',
-                    link: 'project-detail-3.html'
+                    title: 'Multimodal AI-Based Perception Enhancement System',
+                    description: 'Led a team to design a <strong>conceptual demonstration model</strong> for low-visibility environments, integrating metamaterials with AI-driven data fusion.',
+                    image: '../photos/projects/3/8.jpg',
+                    link: './projects/project-detail-3.html',
+                    featured: true 
                 },
                 {
-                    title: 'Coming soon',
-                    description: 'N/A',
-                    image: 'https://placehold.co/800x600/374151/FFFFFF?text=Project+4',
-                    link: 'project-detail-4.html'
+                    title: 'Intelligent Library Book Delivery System',
+                    description: 'A prototype for an automated library system featuring a delivery robot, modular shelving, and a mobile app to streamline book borrowing.',
+                    image: '../photos/projects/4/2.jpg',
+                    link: './projects/project-detail-4.html', // Changed link to avoid 404
+                    featured: true 
                 }
             ];
+
+            // Filter for featured projects for the carousel
+            const featuredProjects = allProjects.filter(p => p.featured);
 
             const carouselContainer = document.querySelector('.filmstrip-carousel');
             const carouselTrack = document.querySelector('.carousel-track');
             const projectsGrid = document.querySelector('.projects-grid .grid');
             let currentIndex = 0;
-            let autoScrollInterval; // Variable to hold the interval timer
+            let autoScrollInterval;
 
-            // --- Populate Carousel and Grid ---
-            projects.forEach(project => {
-                // Create carousel item
+            // --- Populate Carousel with ONLY featured projects ---
+            featuredProjects.forEach(project => {
                 const carouselItem = document.createElement('a');
                 carouselItem.href = project.link;
                 carouselItem.className = 'carousel-item';
                 carouselItem.innerHTML = `<img src="${project.image}" alt="${project.title}">`;
                 carouselTrack.appendChild(carouselItem);
-                
-                // Create grid item
+            });
+
+            // --- Populate Grid with ALL projects ---
+            allProjects.forEach(project => {
                 const gridItem = document.createElement('a');
                 gridItem.href = project.link;
                 gridItem.className = 'bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300';
@@ -217,33 +216,25 @@
             function updateCarousel() {
                 carouselItems.forEach((item, index) => {
                     item.classList.remove('active', 'prev', 'next');
-
-                    if (index === currentIndex) {
-                        item.classList.add('active');
-                    } else if (index === (currentIndex - 1 + projects.length) % projects.length) {
-                        item.classList.add('prev');
-                    } else if (index === (currentIndex + 1) % projects.length) {
-                        item.classList.add('next');
-                    }
+                    if (index === currentIndex) item.classList.add('active');
+                    else if (index === (currentIndex - 1 + featuredProjects.length) % featuredProjects.length) item.classList.add('prev');
+                    else if (index === (currentIndex + 1) % featuredProjects.length) item.classList.add('next');
                 });
             }
 
             function showNext() {
-                currentIndex = (currentIndex + 1) % projects.length;
+                currentIndex = (currentIndex + 1) % featuredProjects.length;
                 updateCarousel();
             }
 
             function showPrev() {
-                currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+                currentIndex = (currentIndex - 1 + featuredProjects.length) % featuredProjects.length;
                 updateCarousel();
             }
             
-            // --- Autoplay Logic ---
             function startAutoScroll() {
-                // Clear any existing interval to prevent duplicates
                 clearInterval(autoScrollInterval); 
-                // Set a new interval
-                autoScrollInterval = setInterval(showNext, 3500); // Change slide every 3.5 seconds
+                autoScrollInterval = setInterval(showNext, 3500);
             }
 
             function stopAutoScroll() {
@@ -251,36 +242,25 @@
             }
 
             // --- Event Listeners ---
-            document.querySelector('.carousel-btn-next').addEventListener('click', () => {
-                showNext();
-                startAutoScroll(); // Reset interval on manual navigation
-            });
-
-            document.querySelector('.carousel-btn-prev').addEventListener('click', () => {
-                showPrev();
-                startAutoScroll(); // Reset interval on manual navigation
-            });
-
-            // Pause autoplay on hover
+            document.querySelector('.carousel-btn-next').addEventListener('click', () => { showNext(); startAutoScroll(); });
+            document.querySelector('.carousel-btn-prev').addEventListener('click', () => { showPrev(); startAutoScroll(); });
             carouselContainer.addEventListener('mouseenter', stopAutoScroll);
-            // Resume autoplay when mouse leaves
             carouselContainer.addEventListener('mouseleave', startAutoScroll);
-
+            
             carouselTrack.addEventListener('click', (e) => {
                 const targetItem = e.target.closest('.carousel-item');
                 if (!targetItem) return;
-
-                if (targetItem.classList.contains('next')) {
-                    showNext();
-                } else if (targetItem.classList.contains('prev')) {
-                    showPrev();
-                }
-                // If the active item is clicked, the default link behavior will proceed.
+                if (targetItem.classList.contains('next')) showNext();
+                else if (targetItem.classList.contains('prev')) showPrev();
             });
             
-            // --- Initialize ---
-            updateCarousel();
-            startAutoScroll(); // Start the autoplay when the page loads
+            // --- Initialize Carousel ---
+            if (featuredProjects.length > 0) {
+                updateCarousel();
+                startAutoScroll();
+            } else {
+                carouselContainer.style.display = 'none';
+            }
         });
     </script>
 </body>
