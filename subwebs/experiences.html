@@ -16,6 +16,11 @@
             font-family: 'Inter', 'Noto Sans SC', sans-serif;
             background-color: #111827; /* Matched dark background */
         }
+        .experience-section:not(:last-child) {
+            border-bottom: 1px solid #374151;
+            padding-bottom: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
         .experience-section h3 {
             font-size: 1.75rem; /* 28px */
             font-weight: bold;
@@ -39,10 +44,10 @@
             <!--<p class="text-lg text-gray-400 mt-2" data-lang-en="Leadership and community involvement." data-lang-zh="领导力与社区参与">Leadership and community involvement.</p>-->
         </header>
 
-        <!-- Main Content -->
-        <main class="space-y-16">
+        <!-- Main Content - Sorted by date (most recent first) -->
+        <main class="space-y-12">
             
-            <!-- Experience 3: Summer Junior Researcher Activity (NEW) -->
+            <!-- Tongji University Event -->
             <section class="experience-section">
                 <div class="bg-gray-800 rounded-lg shadow-lg p-8">
                     <h3 data-lang-en="SYIS Summer Special Program for Members @ Tongji University" data-lang-zh="上海市青少年科学研究院小研究员暑期特别活动＠同济大学">SYIS Summer Special Program for Members @ Tongji University</h3>
@@ -60,41 +65,73 @@
                 </div>
             </section>
 
-            <!-- Experience 1: Student Council -->
-            <section class="experience-section flex flex-col md:flex-row items-center gap-8 pt-8">
+            <!-- School Science Lecture -->
+            <section class="experience-section flex flex-col md:flex-row-reverse items-center gap-8">
                 <div class="md:w-2/5 w-full">
-                    <img src="../photos/expericence/opstudentcouncil.jpg" alt="Student Council" class="rounded-lg shadow-lg w-full">
+                    <img src="https://github.com/Alessio1Wong/bio/blob/main/schoollecture2.jpg?raw=true" alt="Science Lecture" class="rounded-lg shadow-lg w-full">
                 </div>
                 <div class="md:w-3/5 w-full">
-                    <h3 data-lang-en="Student Council of the SYIS" data-lang-zh="上海市青少年科学研究院－学生理事会">Student Council of the SYIS</h3>
-                    <div data-lang-en="<p class='text-gray-300 leading-relaxed'>The Student Council of the Shanghai Youth Science Research Institute is a self-governance organization for city-level junior researchers. It is responsible for planning and executing activities to promote academic collaboration, innovation, and leadership.</p><strong class='block mt-4 text-gray-200'>Duration:</strong><p class='text-gray-400'>June 2024 – June 2026 (Anticipated)</p>" data-lang-zh="<p class='text-gray-300 leading-relaxed'>上海市青少年科学研究院学生会是由市级小研究员组成的学生自治组织，负责策划、组织和执行各类学生活动，以促进学术合作、创新和领导力发展。</p><strong class='block mt-4 text-gray-200'>服务期限：</strong><p class='text-gray-400'>2024年6月 – 2026年6月 (预计)</p>">
-                        <p class="text-gray-300 leading-relaxed">The Student Council of the Shanghai Youth Science Research Institute is a self-governance organization for city-level junior researchers. It is responsible for planning and executing activities to promote academic collaboration, innovation, and leadership.</p>
-                        <strong class="block mt-4 text-gray-200">Role:</strong>
-                        <p class="text-gray-400">Vice President</p>
-                        <strong class="block mt-4 text-gray-200">Duration:</strong>
-                        <p class="text-gray-400">June 2024 – June 2026 (Anticipated)</p>
+                    <h3 data-lang-en="School Science Lecture for Adolescents" data-lang-zh="青少年科学讲座">School Science Lecture for Adolescents</h3>
+                    <div data-lang-en="<p class='text-gray-400 mb-2'><strong>Date:</strong> October 2024</p><p class='text-gray-300 leading-relaxed'>As the organizer, planner, and keynote speaker of the Student Science Forum, I developed and delivered a series of academic workshops on research-based learning for high school underclassmen, providing guidance and inspiration for their academic journeys.</p>" data-lang-zh="<p class='text-gray-400 mb-2'><strong>日期：</strong>2024年10月</p><p class='text-gray-300 leading-relaxed'>作为学生科学论坛的组织者、策划者和主讲人，我为高中低年级学生开发并主讲了一系列关于研究性学习的学术工作坊，为他们的学术之旅提供指导和启发。</p>">
+                        <p class="text-gray-400 mb-2"><strong>Date:</strong> October 2024</p>
+                        <p class="text-gray-300 leading-relaxed">As the organizer, planner, and keynote speaker of the Student Science Forum, I developed and delivered a series of academic workshops on research-based learning for high school underclassmen, providing guidance and inspiration for their academic journeys.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- INCLUSION Conference (The Bund Conference) -->
+            <section class="experience-section flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-2/5 w-full">
+                     <img src="../photos/expericence/waitan.jpg" alt="The Bund Conference Booth" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-3/5 w-full">
+                    <h3 data-lang-en="INCLUSION Conference (The Bund Conference)" data-lang-zh="外滩大会">INCLUSION Conference (The Bund Conference)</h3>
+                    <div data-lang-en="<p class='text-gray-400 mb-2'><strong>Date:</strong> September 2024</p><p class='text-gray-300 leading-relaxed'>I was selected to present my 'Remote Chemistry Experiment Assistant' project at the student exhibition section of the INCLUSION Conference. I engaged with attendees, explaining the system's design, functionality, and potential applications in modern education.</p>" data-lang-zh="<p class='text-gray-400 mb-2'><strong>日期：</strong>2024年9月</p><p class='text-gray-300 leading-relaxed'>我被选中于外滩大会的学生展览环节，向与会者介绍和展示我的“远程化学实验助手”项目。我负责讲解该系统的设计理念、功能实现及其在现代教育中的应用潜力。</p>">
+                        <p class="text-gray-400 mb-2"><strong>Date:</strong> September 2024</p>
+                        <p class="text-gray-300 leading-relaxed">I was selected to present my 'Remote Chemistry Experiment Assistant' project at the student exhibition section of the INCLUSION Conference. I engaged with attendees, explaining the system's design, functionality, and potential applications in modern education.</p>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Student Council of the SYIS -->
+            <section class="experience-section flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-2/5 w-full">
+                    <img src="https://github.com/Alessio1Wong/bio/blob/main/opstudentcouncil.jpg?raw=true" alt="Student Council" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-3/5 w-full">
+                    <h3 data-lang-en="Student Council of the SYIS" data-lang-zh="上海市青少年科研院学生会">Student Council of the SYIS</h3>
+                    <div data-lang-en="<p class='text-gray-400 mb-2'><strong>Duration:</strong> June 2024 – June 2026 (Anticipated)</p><p class='text-gray-300 leading-relaxed'>As Vice Chairman, I am responsible for initiating and leading student activities, including academic workshops and collaborations with universities, to promote innovation and leadership among junior researchers.</p>" data-lang-zh="<p class='text-gray-400 mb-2'><strong>服务期限：</strong>2024年6月 – 2026年6月 (预计)</p><p class='text-gray-300 leading-relaxed'>作为副理事长，我负责发起并领导各项学生活动，包括学术工作坊以及与高校的合作项目，旨在提升小研究员们的创新与领导能力。</p>">
+                         <p class="text-gray-400 mb-2"><strong>Duration:</strong> June 2024 – June 2026 (Anticipated)</p>
+                         <p class="text-gray-300 leading-relaxed">As Vice Chairman, I am responsible for initiating and leading student activities, including academic workshops and collaborations with universities, to promote innovation and leadership among junior researchers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WLA Future Scientist Program -->
+            <section class="experience-section flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-2/5 w-full">
+                    <img src="../photos/expericence/wla3.jpg" alt="Future Scientist Program" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-3/5 w-full">
+                    <h3 data-lang-en="WLA Future Scientist Program (Inaugural)" data-lang-zh="首届世界顶尖科学家论坛-未来科学家培养计划">WLA Future Scientist Program</h3>
+                    <div data-lang-en="<p class='text-gray-400 mb-2'><strong>Date:</strong> 2024</p><p class='text-gray-300 leading-relaxed'>Participated in the inaugural Future Scientist Program, where I was honored with the <strong>'Outstanding Member'</strong> award for my performance and contributions throughout the event.</p>" data-lang-zh="<p class='text-gray-400 mb-2'><strong>日期：</strong>2024年</p><p class='text-gray-300 leading-relaxed'>我参加了首届“未来科学家培养计划”，并因在活动中的表现和贡献，荣获<strong>“优秀学员”</strong>称号。</p>">
+                        <p class="text-gray-400 mb-2"><strong>Date:</strong> 2024</p>
+                        <p class="text-gray-300 leading-relaxed">Participated in the inaugural Future Scientist Program, where I was honored with the <strong>'Outstanding Camper'</strong> award for my performance and contributions throughout the event.</p>
                     </div>
                 </div>
             </section>
             
-            <!-- Experience 2: School Science Lecture -->
-            <section class="experience-section flex flex-col md:flex-row-reverse items-center gap-8 pt-8">
-                <div class="md:w-2/5 w-full">
-                    <img src="../photos/expericence/schoollecture2.jpg" alt="Science Lecture" class="rounded-lg shadow-lg w-full">
-                </div>
-                <div class="md:w-3/5 w-full">
-                    <h3 data-lang-en="School Science Lecture for Adolescents" data-lang-zh="青少年科学讲座">School Science Lecture for Adolescents</h3>
-                    <div data-lang-en="<p class='text-gray-300 leading-relaxed'>As the organizer, planner, and keynote speaker of the Student Science Forum, I developed and delivered a series of academic workshops on research-based learning for high school underclassmen, providing guidance and inspiration for their academic journeys.</p><strong class='block mt-4 text-gray-200'>Key Topics Covered:</strong><ul class='list-disc list-inside text-gray-400 mt-2'><li>Efficiently reading academic papers</li><li>Identifying research topics</li><li>Managing long-term research projects</li></ul>" data-lang-zh="<p class='text-gray-300 leading-relaxed'>作为学生科学论坛的组织者、策划者和主讲人，我为高中低年级学生开发并主讲了一系列关于研究性学习的学术工作坊，为他们的学术之旅提供指导和启发。</p><strong class='block mt-4 text-gray-200'>讲座核心内容：</strong><ul class='list-disc list-inside text-gray-400 mt-2'><li>高效阅读学术论文的技巧</li><li>如何确定研究课题</li><li>管理长期研究项目的策略</li></ul>">
-                        <p class="text-gray-300 leading-relaxed">As the organizer, planner, and keynote speaker of the Student Science Forum, I developed and delivered a series of academic workshops on research-based learning for high school underclassmen, providing guidance and inspiration for their academic journeys.</p>
-                        <strong class="block mt-4 text-gray-200">Key Topics Covered:</strong>
-                        <ul class="list-disc list-inside text-gray-400 mt-2">
-                            <li>Efficiently reading academic papers</li>
-                            <li>Identifying research topics</li>
-                            <li>Managing long-term research projects</li>
-                        </ul>
-                    </div>
+            <!-- WLA Forum Attendance -->
+             <section class="experience-section text-center">
+                <h3 data-lang-en="World Laureates Forum Attendance" data-lang-zh="世界顶尖科学家论坛参会经历">World Laureates Forum Attendance</h3>
+                <p class="text-gray-300 max-w-3xl mx-auto" data-lang-en="I have had the privilege of attending the prestigious World Laureates Forum for three consecutive years, engaging with leading scientists and global innovators." data-lang-zh="我曾有幸连续三年参加享誉盛名的世界顶尖科学家论坛，与顶尖科学家和全球创新领袖们进行交流。">I have had the privilege of attending the prestigious World Laureates Forum for three consecutive years, engaging with leading scientists and global innovators.</p>
+                <p class="font-bold text-2xl text-white my-4">2022 &bull; 2023 &bull; 2024</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <img src="../photos/expericence/wla1.jpg" alt="WLA Forum Photo 1" class="rounded-lg shadow-lg w-full">
+                    <img src="../photos/expericence/wla2.jpg" alt="WLA Forum Photo 2" class="rounded-lg shadow-lg w-full">
                 </div>
             </section>
+
         </main>
 
         <!-- Footer with Back Button -->
