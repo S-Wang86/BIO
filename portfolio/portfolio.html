@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shaofu Wang - Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F8F8;
+            color: #000000;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
+
+        /* 噪点纹理增加纸张质感 */
+        .bg-noise {
+            position: fixed; inset: 0; pointer-events: none; z-index: 50;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+        }
+        
+        /* 隐藏滚动条但保留功能 */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+    </style>
+</head>
+<body class="selection:bg-black selection:text-white">
+
+    <div class="bg-noise"></div>
+
+    <main class="w-full max-w-[1600px] mx-auto border-x border-gray-200 bg-white shadow-2xl my-0 lg:my-8 relative z-10 overflow-hidden">
+
+        <!-- ========================================== -->
+        <!-- SPREAD 1: COVER & ABOUT -->
+        <!-- ========================================== -->
+        <section class="min-h-screen flex flex-col lg:flex-row border-b border-gray-200">
+            <!-- Left: Cover -->
+            <div class="w-full lg:w-1/2 flex flex-col p-8 lg:p-16 border-b lg:border-b-0 lg:border-r border-gray-200 relative bg-white">
+                <div class="flex justify-between items-start">
+                    <div class="w-16 h-16 border-2 border-black flex items-center justify-center font-serif text-2xl font-bold">SW</div>
+                    <div class="text-xs tracking-[0.2em] text-gray-500 uppercase text-right leading-loose font-medium">
+                        Shaofu Wang<br>Mechanical<br>Engineering
+                    </div>
+                </div>
+                
+                <div class="my-24 w-full h-48 border-y border-gray-200 flex items-center justify-center relative">
+                    <div class="absolute w-32 h-px bg-gray-300 transform -rotate-45"></div>
+                    <div class="absolute w-20 h-20 border border-gray-300 bg-white"></div>
+                </div>
+
+                <div class="mt-auto">
+                    <h1 class="font-serif text-6xl lg:text-[100px] font-bold tracking-tight text-black uppercase leading-none">Portfolio</h1>
+                    <!--<p class="text-sm tracking-[0.4em] text-gray-400 mt-6 uppercase font-bold">2026 — 2030</p>-->
+                </div>
+            </div>
+            
+            <!-- Right: About -->
+            <div class="w-full lg:w-1/2 flex flex-col justify-center p-8 lg:p-16 bg-[#FAFAFA]">
+                <h2 class="font-serif text-4xl lg:text-5xl mb-8 font-bold text-black">About Me</h2>
+                <p class="text-base lg:text-lg leading-relaxed text-gray-600 font-light mb-12">
+                   This portfolio highlights my representative projects across mechanical design, fluid dynamics and software development.
+                </p>
+                <h3 class="text-xs uppercase tracking-widest text-black font-bold mb-6 border-b-2 border-black pb-2 inline-block">Fields</h3>
+                <ul class="text-sm lg:text-base text-gray-600 space-y-4 font-medium">
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-black rounded-full"></span> Mechanical Design (CAD/FEA)</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-black rounded-full"></span> Robotics & Control</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-black rounded-full"></span> iOS Development</li>
+                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-black rounded-full"></span> Fluid Dynamics</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SPREAD 2: TOC -->
+        <!-- ========================================== -->
+        <section class="min-h-screen flex flex-col lg:flex-row border-b border-gray-200">
+            <div class="w-full lg:w-[25%] flex items-center justify-center border-b lg:border-b-0 lg:border-r border-gray-200 bg-[#FAFAFA] py-16 lg:py-0">
+                <h2 class="lg:vertical-text font-serif text-5xl lg:text-[80px] font-bold tracking-widest text-gray-200 uppercase">Contents</h2>
+            </div>
+            <div class="w-full lg:w-[75%] p-8 lg:p-24 flex flex-col justify-center bg-white">
+                <div class="text-xs uppercase tracking-widest text-gray-400 mb-16 border-b border-gray-200 pb-4 font-bold">Project Index</div>
+                <div class="space-y-10 lg:space-y-16">
+                    <a href="#proj1" class="flex flex-col md:flex-row md:items-end justify-between cursor-pointer group">
+                        <div class="flex items-baseline mb-2 md:mb-0"><span class="text-sm text-gray-400 mr-6 font-bold">01</span><span class="font-serif text-3xl lg:text-4xl text-gray-600 group-hover:text-black transition">Smart Cabin Lock</span></div>
+                        <span class="hidden md:block border-b border-dashed border-gray-300 flex-1 mx-8 mb-2"></span>
+                        <span class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-2 md:mt-0">Mechanical</span>
+                    </a>
+                    <a href="#proj2" class="flex flex-col md:flex-row md:items-end justify-between cursor-pointer group">
+                        <div class="flex items-baseline mb-2 md:mb-0"><span class="text-sm text-gray-400 mr-6 font-bold">02</span><span class="font-serif text-3xl lg:text-4xl text-gray-600 group-hover:text-black transition">Oops Budget</span></div>
+                        <span class="hidden md:block border-b border-dashed border-gray-300 flex-1 mx-8 mb-2"></span>
+                        <span class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-2 md:mt-0">Software</span>
+                    </a>
+                    <a href="#proj3" class="flex flex-col md:flex-row md:items-end justify-between cursor-pointer group">
+                        <div class="flex items-baseline mb-2 md:mb-0"><span class="text-sm text-gray-400 mr-6 font-bold">03</span><span class="font-serif text-3xl lg:text-4xl text-gray-600 group-hover:text-black transition">Auto-Clean Window</span></div>
+                        <span class="hidden md:block border-b border-dashed border-gray-300 flex-1 mx-8 mb-2"></span>
+                        <span class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-2 md:mt-0">Robotics</span>
+                    </a>
+                    <a href="#proj4" class="flex flex-col md:flex-row md:items-end justify-between cursor-pointer group">
+                        <div class="flex items-baseline mb-2 md:mb-0"><span class="text-sm text-gray-400 mr-6 font-bold">04</span><span class="font-serif text-3xl lg:text-4xl text-gray-600 group-hover:text-black transition">Drag Reduction</span></div>
+                        <span class="hidden md:block border-b border-dashed border-gray-300 flex-1 mx-8 mb-2"></span>
+                        <span class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-2 md:mt-0">Fluid Analysis</span>
+                    </a>
+                    <a href="#proj5" class="flex flex-col md:flex-row md:items-end justify-between cursor-pointer group">
+                        <div class="flex items-baseline mb-2 md:mb-0"><span class="text-sm text-gray-400 mr-6 font-bold">05</span><span class="font-serif text-3xl lg:text-4xl text-gray-600 group-hover:text-black transition">Lab Assistant</span></div>
+                        <span class="hidden md:block border-b border-dashed border-gray-300 flex-1 mx-8 mb-2"></span>
+                        <span class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-2 md:mt-0">Robotics</span>
+                    </a>
+                    <a href="#proj5" class="flex flex-col md:flex-row md:items-end justify-between cursor-pointer group">
+                        <div class="flex items-baseline mb-2 md:mb-0"><span class="text-sm text-gray-400 mr-6 font-bold">06</span><span class="font-serif text-3xl lg:text-4xl text-gray-600 group-hover:text-black transition">CardCraft</span></div>
+                        <span class="hidden md:block border-b border-dashed border-gray-300 flex-1 mx-8 mb-2"></span>
+                        <span class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-2 md:mt-0">Software</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PROJECT 01: SMART CABIN LOCK -->
+        <!-- ========================================== -->
+        <section id="proj1" class="min-h-screen flex flex-col border-b border-gray-200">
+            <div class="flex flex-col lg:flex-row border-b border-gray-200">
+                <div class="w-full lg:w-1/2 p-8 lg:p-16 flex flex-col justify-end bg-[#FAFAFA] border-b lg:border-b-0 lg:border-r border-gray-200 min-h-[30vh]">
+                    <span class="text-xs tracking-[0.3em] text-gray-400 mb-4 uppercase font-bold">PROJECT 01</span>
+                    <h1 class="font-serif text-5xl lg:text-7xl text-black leading-none font-bold">Smart Bin Lock</h1>
+                </div>
+                <div class="w-full lg:w-1/2 flex">
+                    <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center bg-white border-r border-gray-200">
+                        <h3 class="text-xs uppercase tracking-widest text-black font-black mb-6 border-l-4 border-black pl-4">Context</h3>
+                        <p class="text-sm leading-relaxed text-gray-600 font-light">
+                            A functional prototype for an automated luggage compartment lock, bridging mechanical hardware with electronic control.
+                        </p>
+                    </div>
+                    <div class="w-[40%] p-8 lg:p-16 bg-[#FBFBFA] flex flex-col justify-center">
+                        <ul class="text-xs uppercase tracking-widest text-gray-500 space-y-4 font-bold">
+                            <li><span class="text-black block mb-1">Role</span>Mech Design</li>
+                            <li><span class="text-black block mb-1">Software</span>CATIA</li>
+                            <li><span class="text-black block mb-1">Status</span>Prototype</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row flex-1 min-h-[50vh]">
+                <div class="w-full lg:w-2/3 p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-gray-200 bg-white flex flex-col">
+                    <div class="relative w-full flex-1 min-h-[300px] overflow-hidden bg-gray-50 group border border-gray-200">
+                        <img src="./photos/5/cad2.png" alt="CAD Assembly" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <!--<span class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-[10px] font-bold uppercase tracking-widest shadow-sm">CAD Assembly</span>-->
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/3 flex flex-col">
+                    <div class="flex-1 p-8 lg:p-12 border-b border-gray-200 bg-[#FAFAFA] flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[250px] overflow-hidden bg-white group border border-gray-200">
+                            <img src="./photos/5/cad1.png" alt="Mechanism Detail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            
+                        </div>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-12 bg-white flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[250px] overflow-hidden bg-[#FAFAFA] group border border-gray-200">
+                            <img src="./photos/5/prototype.png" alt="Prototype" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PROJECT 02: OOPS BUDGET -->
+        <!-- ========================================== -->
+        <section id="proj2" class="min-h-screen flex flex-col border-b border-gray-200">
+            <div class="flex flex-col lg:flex-row-reverse border-b border-gray-200">
+                <div class="w-full lg:w-1/2 p-8 lg:p-16 flex flex-col justify-end bg-white border-b lg:border-b-0 border-gray-200 min-h-[30vh]">
+                    <span class="text-xs tracking-[0.3em] text-gray-400 mb-4 uppercase font-bold">PROJECT 02</span>
+                    <h1 class="font-serif text-5xl lg:text-7xl text-black leading-none font-bold">Oops Budget</h1>
+                </div>
+                <div class="w-full lg:w-1/2 flex border-r border-gray-200">
+                    <div class="w-[40%] p-8 lg:p-16 bg-[#FAFAFA] border-r border-gray-200 flex flex-col justify-center">
+                        <ul class="text-xs uppercase tracking-widest text-gray-500 space-y-4 font-bold">
+                            <li><span class="text-black block mb-1">Platform</span>iOS App</li>
+                            <li><span class="text-black block mb-1">Stack</span>SwiftData</li>
+                            <li><span class="text-black block mb-1">AI</span>Gemini API</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center bg-[#FBFBFA]">
+                        <h3 class="text-xs uppercase tracking-widest text-black font-black mb-6 border-l-4 border-black pl-4">Abstract</h3>
+                        <p class="text-sm leading-relaxed text-gray-600 font-light">
+                            An iOS accounting app powered by Gemini AI, delivering personalized financial insights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row flex-1 min-h-[50vh]">
+                <div class="w-full lg:w-1/2 p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-gray-200 bg-[#FAFAFA] flex flex-col">
+                    <div class="relative w-full flex-1 min-h-[400px] flex items-center justify-center group">
+                        <img src="./photos/7/home.png" alt="Hero Mockup UI" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 flex flex-col sm:flex-row">
+                    <div class="flex-1 p-8 lg:p-12 border-b sm:border-b-0 sm:border-r border-gray-200 bg-white flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[300px] flex items-center justify-center group">
+                            <img src="./photos/7/analysis.png" alt="Analysis Chart" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl">
+                            
+                        </div>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-12 bg-[#FBFBFA] flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[300px] flex items-center justify-center group">
+                            <img src="./photos/7/advisor.png" alt="AI Advisor" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PROJECT 03: AUTO-CLEANING WINDOW -->
+        <!-- ========================================== -->
+        <section id="proj3" class="min-h-screen flex flex-col border-b border-gray-200">
+            <div class="flex flex-col lg:flex-row border-b border-gray-200">
+                <div class="w-full lg:w-1/2 p-8 lg:p-16 flex flex-col justify-end bg-[#FAFAFA] border-b lg:border-b-0 lg:border-r border-gray-200 min-h-[30vh]">
+                    <span class="text-xs tracking-[0.3em] text-gray-400 mb-4 uppercase font-bold">PROJECT 03</span>
+                    <h1 class="font-serif text-5xl lg:text-7xl text-black leading-none font-bold">Auto-Clean Window</h1>
+                </div>
+                <div class="w-full lg:w-1/2 flex">
+                    <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center bg-white border-r border-gray-200">
+                        <h3 class="text-xs uppercase tracking-widest text-black font-black mb-6 border-l-4 border-black pl-4">Context</h3>
+                        <p class="text-sm leading-relaxed text-gray-600 font-light">
+                            An automated cleaning solution integrating mechanical, electronic, and software systems, designed to clean high-rise windows autonomously via remote control.
+                        </p>
+                    </div>
+                    <div class="w-[40%] p-8 lg:p-16 bg-[#FBFBFA] flex flex-col justify-center">
+                        <ul class="text-xs uppercase tracking-widest text-gray-500 space-y-4 font-bold">
+                            <li><span class="text-black block mb-1">Category</span>Robotics / IoT</li>
+                            <li><span class="text-black block mb-1">Control</span>Arduino UNO</li>
+                            <li><span class="text-black block mb-1">Actuator</span>JGY370 Motor</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row flex-1 min-h-[50vh]">
+                <div class="w-full lg:w-1/2 p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-gray-200 bg-white flex flex-col">
+                    <div class="relative w-full flex-1 min-h-[250px] overflow-hidden bg-gray-50 group border border-gray-200 flex items-center justify-center">
+                        <img src="./photos/8/1.png" alt="Robot Assembly" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 flex flex-col sm:flex-row">
+                    <div class="flex-1 p-8 lg:p-12 border-b sm:border-b-0 sm:border-r border-gray-200 bg-[#FAFAFA] flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[250px] overflow-hidden bg-white group border border-gray-200 flex items-center justify-center">
+                            <img src="./photos/8/3.png" alt="Transmission Module" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                           
+                        </div>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-12 bg-white flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[250px] overflow-hidden group flex items-center justify-center">
+                            <img src="./photos/8/2.png" alt="App UI" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-lg">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PROJECT 04: DRAG REDUCTION -->
+        <!-- ========================================== -->
+        <section id="proj4" class="min-h-screen flex flex-col border-b border-gray-200">
+            <div class="flex flex-col lg:flex-row-reverse border-b border-gray-200">
+                <div class="w-full lg:w-1/2 p-8 lg:p-16 flex flex-col justify-end bg-white border-b lg:border-b-0 border-gray-200 min-h-[30vh]">
+                    <span class="text-xs tracking-[0.3em] text-gray-400 mb-4 uppercase font-bold">PROJECT 04</span>
+                    <h1 class="font-serif text-5xl lg:text-7xl text-black leading-none font-bold">Drag Reduction</h1>
+                </div>
+                <div class="w-full lg:w-1/2 flex border-r border-gray-200">
+                    <div class="w-[40%] p-8 lg:p-16 bg-[#FAFAFA] border-r border-gray-200 flex flex-col justify-center">
+                        <ul class="text-xs uppercase tracking-widest text-gray-500 space-y-4 font-bold">
+                            <li><span class="text-black block mb-1">Subject</span>Fluid Dynamics</li>
+                            <li><span class="text-black block mb-1">Method</span>CFD Sim</li>
+                            <li><span class="text-black block mb-1">Award</span>1st Prize SH</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center bg-[#FBFBFA]">
+                        <h3 class="text-xs uppercase tracking-widest text-black font-black mb-6 border-l-4 border-black pl-4">Abstract</h3>
+                        <p class="text-sm leading-relaxed text-gray-600 font-light mb-4">
+                            Investigated ventilated cavity technology to significantly reduce the underwater drag of a ship. Established formula via least squares curve fitting.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row flex-1 min-h-[50vh]">
+                <div class="w-full lg:w-1/2 p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-gray-200 bg-white flex flex-col">
+                    <div class="relative w-full flex-1 min-h-[300px] overflow-hidden bg-gray-50 group border border-gray-200">
+                        <img src="./photos/1/2.jpg" alt="Experiment Setup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 p-8 lg:p-12 bg-[#FAFAFA] flex flex-col">
+                    <div class="relative w-full flex-1 min-h-[300px] overflow-hidden flex items-center justify-center group border border-gray-200 bg-white p-4">
+                        <img src="./photos/1/board.jpg" alt="Data Analysis" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PROJECT 05: LAB ASSISTANT -->
+        <!-- ========================================== -->
+        <section id="proj5" class="min-h-screen flex flex-col border-b border-gray-200">
+            <div class="flex flex-col lg:flex-row border-b border-gray-200">
+                <div class="w-full lg:w-1/2 p-8 lg:p-16 flex flex-col justify-end bg-[#FAFAFA] border-b lg:border-b-0 lg:border-r border-gray-200 min-h-[30vh]">
+                    <span class="text-xs tracking-[0.3em] text-gray-400 mb-4 uppercase font-bold">PROJECT 05</span>
+                    <h1 class="font-serif text-5xl lg:text-7xl text-black leading-none font-bold">Lab Assistant</h1>
+                </div>
+                <div class="w-full lg:w-1/2 flex">
+                    <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center bg-white border-r border-gray-200">
+                        <h3 class="text-xs uppercase tracking-widest text-black font-black mb-6 border-l-4 border-black pl-4">Context</h3>
+                        <p class="text-sm leading-relaxed text-gray-600 font-light">
+                            A robotic assistant designed to conduct hazardous or inaccessible chemistry experiments remotely. Features a 4-DOF robotic arm and ESP32-CAM video streaming.
+                        </p>
+                    </div>
+                    <div class="w-[40%] p-8 lg:p-16 bg-[#FBFBFA] flex flex-col justify-center">
+                        <ul class="text-xs uppercase tracking-widest text-gray-500 space-y-4 font-bold">
+                            <li><span class="text-black block mb-1">Field</span>Robotics / IoT</li>
+                            <li><span class="text-black block mb-1">Board</span>Arduino</li>
+                            <li><span class="text-black block mb-1">Network</span>ESP32</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row flex-1 min-h-[50vh] ">
+                <div class="w-full lg:w-1/3 flex flex-col">
+                    <div class="flex-1 p-8 lg:p-12 border-b border-gray-200 bg-[#FAFAFA] flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[150px] overflow-hidden group border border-gray-200 bg-white">
+                            <img src="./photos/2/fig2.jpg" alt="CAD Overview" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                           
+                        </div>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-12 bg-white flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[250px] overflow-hidden group border border-gray-200 bg-[#FAFAFA] flex items-center justify-center p-2">
+                            <img src="./photos/2/6.png" alt="Workflow Diagram" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-2/3 p-8 lg:p-12 border-b lg:border-b-0 lg:border-l border-gray-200 bg-white flex flex-col">
+                    <div class="relative w-full flex-1 min-h-[250px] max-h-[500px] overflow-hidden bg-gray-50 group border border-gray-200">
+                        <img src="./photos/2/fig3.jpg" alt="Physical System" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        
+                    </div>
+                     <div class="relative w-full flex-1 min-h-[150px] max-h-[300px] overflow-hidden bg-gray-50 group border border-gray-200">
+                        <img src="./photos/2/3.jpg" alt="Physical System" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========================================== -->
+        <!-- PROJECT 06: cardcraft -->
+        <!-- ========================================== -->
+        <section id="proj4" class="min-h-screen flex flex-col border-b border-gray-200">
+            <div class="flex flex-col lg:flex-row-reverse border-b border-gray-200">
+                <div class="w-full lg:w-1/2 p-8 lg:p-16 flex flex-col justify-end bg-white border-b lg:border-b-0 border-gray-200 min-h-[30vh]">
+                    <span class="text-xs tracking-[0.3em] text-gray-400 mb-4 uppercase font-bold">PROJECT 06</span>
+                    <h1 class="font-serif text-5xl lg:text-7xl text-black leading-none font-bold">CardCraft</h1>
+                </div>
+                <div class="w-full lg:w-1/2 flex border-r border-gray-200">
+                    <div class="w-[40%] p-8 lg:p-16 bg-[#FAFAFA] border-r border-gray-200 flex flex-col justify-center">
+                        <ul class="text-xs uppercase tracking-widest text-gray-500 space-y-4 font-bold">
+                            <li><span class="text-black block mb-1">Platform</span>iOS App</li>
+                            <li><span class="text-black block mb-1">Stack</span>SwiftData</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-16 flex flex-col justify-center bg-[#FBFBFA]">
+                        <h3 class="text-xs uppercase tracking-widest text-black font-black mb-6 border-l-4 border-black pl-4">Abstract</h3>
+                        <p class="text-sm leading-relaxed text-gray-600 font-light mb-4">
+                            Turn everyday objects into Pokémon-style collectible cards with AI.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="w-full flex flex-col sm:flex-row max-h-[350px]">
+                    <div class="flex-1 p-8 lg:p-12 border-b sm:border-b-0 sm:border-r border-gray-200 bg-white flex flex-col">
+                        <div class="relative w-full flex-1 min-h-[300px] flex items-center justify-center group">
+                            <img src="./photos/6/home.PNG" alt="Analysis Chart" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl">
+                            
+                        </div>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-12 bg-white border-b sm:border-b-0 sm:border-r border-gray-200 bg-[#FBFBFA] flex flex-row">
+                        <div class="relative w-full flex-1 min-h-[300px] flex items-center justify-center group">
+                            <img src="./photos/6/battle.PNG" alt="AI Advisor" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl">
+                              </div>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-12 bg-white border-b sm:border-b-0 sm:border-r border-gray-200 flex flex-row">
+                        <div class="relative w-full flex-1 min-h-[300px] flex items-center justify-center group">
+                            <img src="./photos/6/gallery.PNG" alt="AI Advisor" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl">
+                            </div>
+                    </div>
+                </div>
+            <div class="w-full flex flex-col sm:flex-row max-h-[300px]">
+                    <div class="flex-1 p-8 lg:p-12 bg-white border-b sm:border-b-0 sm:border-r border-gray-200 bg-[#FBFBFA] flex flex-row">
+                        <div class="relative w-full flex-1 min-h-[200px] flex items-center justify-center group">
+                            <img src="./photos/6/craft.PNG" alt="AI Advisor" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl">
+                         </div>
+                    </div>
+                    <div class="flex-1 p-8 lg:p-12 bg-white border-b sm:border-b-0 sm:border-r border-gray-200 flex flex-row">
+                        <div class="relative w-full flex-1 min-h-[200px] flex items-center justify-center group">
+                            <img src="./photos/6/fight.PNG" alt="AI Advisor" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl">
+                         </div>
+                    </div>
+            </div>
+        </section>
+        <!-- ========================================== -->
+        <!-- FOOTER -->
+        <!-- ========================================== -->
+        <section class="py-24 bg-[#111] text-white flex flex-col items-center justify-center text-center px-8">
+            <div class="w-16 h-16 border-2 border-white flex items-center justify-center font-serif text-2xl font-bold mb-8">SW</div>
+            <h2 class="font-serif text-4xl lg:text-5xl font-bold tracking-widest uppercase mb-8">Thank You</h2>
+            <div class="w-16 h-px bg-gray-600 mb-8"></div>
+            <p class="text-gray-400 font-light max-w-md mx-auto leading-relaxed mb-16">
+                SHAOFU.WANG@UWATERLOO.CA
+            </p>
+            <p class="text-xs text-gray-600 uppercase tracking-[0.4em] font-bold">End of Document</p>
+        </section>
+
+    </main>
+
+</body>
+</html>
